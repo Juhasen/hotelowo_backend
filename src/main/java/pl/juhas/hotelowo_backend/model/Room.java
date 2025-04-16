@@ -1,9 +1,6 @@
 ﻿package pl.juhas.hotelowo_backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,8 +12,24 @@ import lombok.With;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "room")
-public class Room{
+public class Room {
     @Id
     @GeneratedValue
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "hotel_id")
+    private Hotel hotel;
+
+    private String number;
+
+    private String type;
+
+    private String description;
+
+    private int capacity;
+
+    private double price;
+
+    private boolean available;
 }
